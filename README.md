@@ -1,2 +1,2 @@
-# cloudx-automation-java
-aws for testers course
+# aws-automation-java
+aws course
