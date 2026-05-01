@@ -87,7 +87,6 @@ public class Ec2DeploymentTest extends BaseEc2Test {
 		String publicSecurityGroupId = getPublicSecurityGroupId();
 
 		for(Instance instance : instances) {
-			// Проходим по ВСЕМ привязанным группам, а не только по первой
 			for (GroupIdentifier groupIdentifier : instance.securityGroups()) {
 				SecurityGroup sg = ec2Client.describeSecurityGroups(
 						DescribeSecurityGroupsRequest.builder()
