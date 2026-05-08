@@ -1,0 +1,26 @@
+package task.vpc.tests;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.ec2.Ec2Client;
+
+public class BaseVpcTest {
+	protected static Ec2Client ec2Client;
+
+	@BeforeAll
+	static void setupClient() {
+		ec2Client = Ec2Client.builder()
+				.region(Region.EU_CENTRAL_1)
+				.credentialsProvider(DefaultCredentialsProvider.create())
+				.build();
+	}
+
+	@AfterAll
+	static void tearDown() {
+		if (ec2Client != null) {
+			ec2Client.close();
+		}
+	}
+}
